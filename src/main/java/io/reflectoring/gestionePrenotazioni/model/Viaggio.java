@@ -41,8 +41,9 @@ public class Viaggio {
         return stato;
     }
 
-
-
+    public Long getViaggioId() {
+        return id;
+    }
 
     public void setDestinazione(String destinazione) {
         this.destinazione = destinazione;

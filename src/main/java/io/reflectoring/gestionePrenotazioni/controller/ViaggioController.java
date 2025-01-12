@@ -1,4 +1,4 @@
-// Updated ViaggioController
+
 package io.reflectoring.gestionePrenotazioni.controller;
 
 import io.reflectoring.gestionePrenotazioni.model.Viaggio;
