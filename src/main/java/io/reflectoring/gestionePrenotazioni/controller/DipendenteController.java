@@ -22,15 +22,14 @@ public class DipendenteController {
     @Autowired
     private DipendenteService dipendenteService;
 
-    private static final String UPLOAD_DIR = "uploads/";  // Usa un percorso relativo per evitare path hardcoded
+    private static final String UPLOAD_DIR = "uploads/";
 
-    // Restituisce tutti i dipendenti
+
     @GetMapping
     public List<Dipendente> getAllDipendenti() {
         return dipendenteService.getAllDipendenti();
     }
 
-    // Crea un nuovo dipendente
     @PostMapping
     public ResponseEntity<Dipendente> createDipendente(@RequestBody DipendenteCreateDTO dipendenteCreateDTO) {
         Dipendente dipendente = new Dipendente();
@@ -52,20 +51,15 @@ public class DipendenteController {
                 return new ResponseEntity<>("Dipendente non trovato", HttpStatus.NOT_FOUND);
             }
 
-            // Verifica se il file è vuoto
             if (file.isEmpty()) {
                 return new ResponseEntity<>("File vuoto", HttpStatus.BAD_REQUEST);
             }
 
-            // Crea il percorso del file
             String filePath = UPLOAD_DIR + file.getOriginalFilename();
             Path path = Paths.get(filePath);
-            Files.createDirectories(path.getParent());  // Crea la directory se non esiste
-
-            // Salva il file nel file system
+            Files.createDirectories(path.getParent());
             Files.write(path, file.getBytes());
 
-            // Memorizza il percorso del file nel dipendente
             dipendente.setImmagineProfiloFromPath(filePath);
             dipendenteService.saveDipendente(dipendente);
 
@@ -75,7 +69,6 @@ public class DipendenteController {
         }
     }
 
-    // Restituisce i dettagli di un dipendente dato l'id
     @GetMapping("/{id}")
     public ResponseEntity<Dipendente> getDipendenteById(@PathVariable Long id) {
         Dipendente dipendente = dipendenteService.getDipendenteById(id);
@@ -86,7 +79,6 @@ public class DipendenteController {
         }
     }
 
-    // Elimina un dipendente dato l'id
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDipendente(@PathVariable Long id) {
         if (dipendenteService.getDipendenteById(id) == null) {

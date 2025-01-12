@@ -23,10 +23,9 @@ public class Dipendente {
     @NotBlank
     private String email;
 
-    @Lob // Per il salvataggio dell'immagine
-    private byte[] immagineProfilo;  // Questo è il campo per l'immagine
+    @Lob
+    private byte[] immagineProfilo;
 
-    // Getter e Setter
 
     public Long getId() {
         return id;
@@ -68,8 +67,8 @@ public class Dipendente {
         this.email = email;
     }
 
-    // Questo metodo serve a impostare il percorso dell'immagine come stringa nel database
+
     public void setImmagineProfiloFromPath(String filePath) {
-        this.immagineProfilo = filePath.getBytes();  // Memorizza il percorso come byte[]
+        this.immagineProfilo = filePath.getBytes();
     }
 }
