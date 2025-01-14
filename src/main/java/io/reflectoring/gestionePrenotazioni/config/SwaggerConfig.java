@@ -1,4 +1,4 @@
-package io.reflectoring.gestionePrenotazioni.config;
+/*package io.reflectoring.gestionePrenotazioni.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
 
-    @Bean
-    public OpenAPI customOpenAPI() {
+    @Bean (name = "swaggerOpenAPI")
+    public OpenAPI swaggerOpenAPI() {
         OpenAPI openAPI = new OpenAPI()
                 .info(new Info()
                         .title("Gestione prenotazioni API")
@@ -54,4 +54,4 @@ public class SwaggerConfig {
 
         return openAPI;
     }
-}
+} */
